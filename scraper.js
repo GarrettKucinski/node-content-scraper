@@ -55,16 +55,3 @@ scrapeIt(`${url}/shirts.php`, {
         });
     }
 });
-
-
-// setTimeout(() => {
-//     // console.log(shirtData);
-//     const fields = ['shirtName', 'requestUrl', 'price', 'imgUrl'];
-
-//     var csv = jsonToCsv({ data: shirtData, fields: fields });
-
-//     fs.writeFile('./data/out.csv', csv, function(err) {
-//         if (err) throw err;
-//         console.log('file saved');
-//     });
-// }, 300);
