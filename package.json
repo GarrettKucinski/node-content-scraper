@@ -1,35 +1,35 @@
 {
-  "name": "content-scraper-v1",
-  "version": "1.0.0",
-  "description": "A nodejs content scraper to crawl the web and collect data",
-  "main": "scraper.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+ssh://git@github.com/GarrettKucinski/node-content-scraper.git"
-  },
-  "keywords": [
-    "content",
-    "scraper",
-    "node",
-    "javascript",
-    "data",
-    "server"
-  ],
-  "author": "Garrett Kucinski",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/GarrettKucinski/node-content-scraper/issues"
-  },
-  "homepage": "https://github.com/GarrettKucinski/node-content-scraper#readme",
-  "dependencies": {
-    "cheerio": "^1.0.0-rc.1",
-    "csv": "^1.1.1",
-    "json2csv": "^3.7.4",
-    "jsonfile": "^3.0.0",
-    "request": "^2.81.0",
-    "scrape-it": "^3.3.2"
-  }
+    "name": "content-scraper-v1",
+    "version": "1.0.0",
+    "description": "A nodejs content scraper to crawl the web and collect data",
+    "main": "scraper.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "start": "node scraper.js && node generate-csv.js"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+ssh://git@github.com/GarrettKucinski/node-content-scraper.git"
+    },
+    "keywords": [
+        "content",
+        "scraper",
+        "node",
+        "javascript",
+        "data",
+        "server"
+    ],
+    "author": "Garrett Kucinski",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/GarrettKucinski/node-content-scraper/issues"
+    },
+    "homepage": "https://github.com/GarrettKucinski/node-content-scraper#readme",
+    "dependencies": {
+        "cheerio": "^1.0.0-rc.1",
+        "json2csv": "^3.7.4",
+        "jsonfile": "^3.0.0",
+        "request": "^2.81.0",
+        "scrape-it": "^3.3.2"
+    }
 }

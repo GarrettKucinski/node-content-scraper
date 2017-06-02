@@ -1,14 +1,16 @@
+"use strict";
+
 const fs = require('fs');
 const jsonfile = require('jsonfile');
 const scrapeIt = require('scrape-it');
 
 const url = 'http://www.shirts4mike.com';
+const shirtLinks = [];
 
 if (!fs.existsSync('./data')) {
     fs.mkdirSync('./data');
 }
 
-const shirtLinks = [];
 //@ts-ignore
 scrapeIt(`${url}/shirts.php`, {
     products: {
@@ -32,7 +34,6 @@ scrapeIt(`${url}/shirts.php`, {
                 selector: '.shirt-details h1',
                 how: 'text'
             },
-            // requestUrl: `${url}/${query}`,
             price: {
                 selector: '.price',
                 how: 'html'

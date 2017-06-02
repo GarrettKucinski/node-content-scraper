@@ -1,3 +1,5 @@
+"use strict";
+
 const fs = require('fs');
 const jsonfile = require('jsonfile');
 const jsonToCsv = require('json2csv');
