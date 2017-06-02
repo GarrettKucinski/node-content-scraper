@@ -28,6 +28,7 @@
     "cheerio": "^1.0.0-rc.1",
     "csv": "^1.1.1",
     "json2csv": "^3.7.4",
+    "jsonfile": "^3.0.0",
     "request": "^2.81.0",
     "scrape-it": "^3.3.2"
   }

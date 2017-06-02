@@ -1,5 +1,5 @@
 const fs = require('fs');
-const jsonToCsv = require('json2csv');
+const jsonfile = require('jsonfile');
 const scrapeIt = require('scrape-it');
 
 const url = 'http://www.shirts4mike.com';
@@ -9,7 +9,6 @@ if (!fs.existsSync('./data')) {
 }
 
 const shirtLinks = [];
-const shirtData = [];
 //@ts-ignore
 scrapeIt(`${url}/shirts.php`, {
     products: {
@@ -22,6 +21,7 @@ scrapeIt(`${url}/shirts.php`, {
         }
     }
 }).then(links => {
+    const shirtData = [];
     for (let link of links.products) {
         shirtLinks.push(link.links);
     }
@@ -41,27 +41,30 @@ scrapeIt(`${url}/shirts.php`, {
                 selector: '.shirt-picture img',
                 attr: 'src'
             }
-        }).then(data => {
+        }, (error, data) => {
             data.shirtName = data.shirtName.split(' ');
             data.shirtName.shift();
             data.shirtName = data.shirtName.join(' ');
-
             data.requestUrl = `${url}/${query}`;
 
             shirtData.push(data);
+
+            jsonfile.writeFile('./data/site-data.json', shirtData, 'utf-8', () => {
+                console.log('data written');
+            });
         });
     }
 });
 
 
-setTimeout(() => {
-    console.log(shirtData);
-    const fields = ['shirtName', 'requestUrl', 'price', 'imgUrl'];
+// setTimeout(() => {
+//     // console.log(shirtData);
+//     const fields = ['shirtName', 'requestUrl', 'price', 'imgUrl'];
 
-    var csv = jsonToCsv({ data: shirtData, fields: fields });
+//     var csv = jsonToCsv({ data: shirtData, fields: fields });
 
-    fs.writeFile('./data/out.csv', csv, function(err) {
-        if (err) throw err;
-        console.log('file saved');
-    });
-}, 300);
+//     fs.writeFile('./data/out.csv', csv, function(err) {
+//         if (err) throw err;
+//         console.log('file saved');
+//     });
+// }, 300);
