@@ -23,5 +23,12 @@
   "bugs": {
     "url": "https://github.com/GarrettKucinski/node-content-scraper/issues"
   },
-  "homepage": "https://github.com/GarrettKucinski/node-content-scraper#readme"
+  "homepage": "https://github.com/GarrettKucinski/node-content-scraper#readme",
+  "dependencies": {
+    "cheerio": "^1.0.0-rc.1",
+    "csv": "^1.1.1",
+    "json2csv": "^3.7.4",
+    "request": "^2.81.0",
+    "scrape-it": "^3.3.2"
+  }
 }
