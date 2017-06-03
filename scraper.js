@@ -41,8 +41,8 @@ scrapeIt(`${url}/shirts.php`, {
         // Scrape each individual shirt url for data on each shirt
         scrapeIt(`${url}/${query}`, {
             Title: {
-                selector: '.shirt-details h1',
-                how: 'text'
+                selector: '.shirt-picture img',
+                attr: 'alt'
             },
             Price: {
                 selector: '.price',
@@ -53,11 +53,6 @@ scrapeIt(`${url}/shirts.php`, {
                 attr: 'src'
             }
         }, (error, data) => {
-            // Parse title data to remove price from string
-            data.Title = data.Title.split(' ');
-            data.Title.shift();
-            data.Title = data.Title.join(' ');
-
             // Set url for each individual shirt object
             data.URL = `${url}/${query}`;
             // Create time stamp for each shirt
