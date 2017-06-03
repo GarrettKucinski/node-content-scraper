@@ -3,6 +3,7 @@
 const fs = require('fs');
 const jsonfile = require('jsonfile');
 const scrapeIt = require('scrape-it');
+const utils = require('./utils');
 
 const url = 'http://www.shirts4mike.com';
 const shirtLinks = [];
@@ -30,29 +31,38 @@ scrapeIt(`${url}/shirts.php`, {
     for (let query of shirtLinks) {
         //@ts-ignore
         scrapeIt(`${url}/${query}`, {
-            shirtName: {
+            Title: {
                 selector: '.shirt-details h1',
                 how: 'text'
             },
-            price: {
+            Price: {
                 selector: '.price',
                 how: 'html'
             },
-            imgUrl: {
+            ImageURL: {
                 selector: '.shirt-picture img',
                 attr: 'src'
             }
         }, (error, data) => {
-            data.shirtName = data.shirtName.split(' ');
-            data.shirtName.shift();
-            data.shirtName = data.shirtName.join(' ');
-            data.requestUrl = `${url}/${query}`;
+            data.Title = data.Title.split(' ');
+            data.Title.shift();
+            data.Title = data.Title.join(' ');
+            data.URL = `${url}/${query}`;
 
             shirtData.push(data);
 
-            jsonfile.writeFile('./data/site-data.json', shirtData, 'utf-8', () => {
+            jsonfile.writeFile('./data/site-data.json', shirtData, 'utf-8', (error) => {
+                if (error) {
+                    utils.fileError(error, 'site-name.json', 'write');
+                }
                 console.log('data written');
             });
+
+            if (error) {
+                utils.connectionError(error, `${url}/${query}`);
+            }
         });
     }
+}).catch(error => {
+    utils.connectionError(error);
 });

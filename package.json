@@ -27,6 +27,7 @@
     "homepage": "https://github.com/GarrettKucinski/node-content-scraper#readme",
     "dependencies": {
         "cheerio": "^1.0.0-rc.1",
+        "console-stamp": "^0.2.5",
         "json2csv": "^3.7.4",
         "jsonfile": "^3.0.0",
         "request": "^2.81.0",
