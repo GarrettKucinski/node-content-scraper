@@ -17,6 +17,11 @@ jsonfile.readFile('./data/site-data.json', (error, data) => {
             if (error) {
                 utils.fileError(error, `${currentDate}.csv`, 'write');
             }
+            fs.unlink('./data/site-data.json', (error) => {
+                if (error) {
+                    utils.fileError(error, 'site-data.json', 'remove');
+                }
+            });
             console.log('file saved');
         });
     } else {
