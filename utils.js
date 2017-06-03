@@ -1,3 +1,5 @@
+"use strict";
+
 const fs = require('fs');
 
 function fileError(error, fileName, operation) {
@@ -9,7 +11,7 @@ function fileError(error, fileName, operation) {
 }
 
 function connectionError(error, url = '') {
-    var now = new Date();
+    const now = new Date();
     const message = `[${now.toString()}] A (${error.code}) error has occured, could not connect to ${error.host}.\n`;
     fs.appendFile('./scraper-error.log', message, () => {
         console.error(message);
