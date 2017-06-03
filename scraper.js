@@ -48,6 +48,7 @@ scrapeIt(`${url}/shirts.php`, {
             data.Title.shift();
             data.Title = data.Title.join(' ');
             data.URL = `${url}/${query}`;
+            data.Time = new Date().toLocaleTimeString();
 
             shirtData.push(data);
 

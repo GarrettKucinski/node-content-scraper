@@ -10,7 +10,7 @@ jsonfile.readFile('./data/site-data.json', (error, data) => {
     if (!error) {
         const currentDate = new Date(new Date().toLocaleDateString()).toISOString().slice(0, 10);
 
-        const fields = ['Title', 'Price', 'ImageURL', 'URL'];
+        const fields = ['Title', 'Price', 'ImageURL', 'URL', 'Time'];
         var csv = jsonToCsv({ data: data, fields: fields });
 
         fs.writeFile(`./data/${currentDate}.csv`, csv, function(error) {
